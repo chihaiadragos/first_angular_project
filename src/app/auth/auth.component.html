@@ -1,4 +1,4 @@
-<mat-card class = "card-container" [formGroup] = "authForm">
+<mat-card  *ngIf = "viewType == 'login'" class = "card-container" [formGroup] = "authForm">
   <mat-card-content>
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
@@ -9,11 +9,12 @@
       <input matInput placeholder="Placeholder" formControlName = "password">
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click) = "onSave()">Create account</button>
+    <button mat-raised-button color="primary" (click) = "onSave()">Login</button>
+    <button mat-raised-button color="primary" (click) = "onSetViewType('register')">Create account</button>
 
   </mat-card-content>
 </mat-card>
-<mat-card class = "card-container" [formGroup] = "authForm">
+<mat-card *ngIf = "viewType == 'register' " class = "card-container" [formGroup] = "authForm">
   <mat-card-content>
     <mat-form-field appearance="fill">
       <mat-label>Username</mat-label>
@@ -33,6 +34,7 @@
     </mat-form-field>
 
     <button mat-raised-button color="primary" (click) = "onSave()">Create account</button>
+    <button mat-raised-button color="primary" (click) = "onSetViewType('login')">Back to login</button>
 
   </mat-card-content>
 </mat-card>

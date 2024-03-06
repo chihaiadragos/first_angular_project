@@ -1,0 +1,38 @@
+<mat-card class = "card-container" [formGroup] = "authForm">
+  <mat-card-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Placeholder" formControlName = "email">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Placeholder" formControlName = "password">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click) = "onSave()">Create account</button>
+
+  </mat-card-content>
+</mat-card>
+<mat-card class = "card-container" [formGroup] = "authForm">
+  <mat-card-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput placeholder="Placeholder" formControlName = "username">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Placeholder" formControlName = "email">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Placeholder" formControlName = "password">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Confirm password</mat-label>
+      <input matInput placeholder="Placeholder" formControlName = "confirmPassword">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click) = "onSave()">Create account</button>
+
+  </mat-card-content>
+</mat-card>

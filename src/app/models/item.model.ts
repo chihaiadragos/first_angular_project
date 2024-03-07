@@ -1,14 +1,24 @@
-class Item {
+export class Item {
+  private _id: string;
   private _title: string;
   private _description: string;
   private _imageUrl: string;
   private _price: string;
 
-  constructor(title: string, description: string, imageUrl: string, price: string) {
+  constructor(id: string, title: string, description: string, imageUrl: string, price: string) {
+    this._id = id;
     this._title = title;
     this._description = description;
     this._imageUrl = imageUrl;
     this._price = price;
+  }
+
+  get id(): string {
+    return this._id;
+  }
+
+  set id(value: string) {
+    this._id = value;
   }
 
   get title(): string {

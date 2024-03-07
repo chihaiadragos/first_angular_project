@@ -24,31 +24,60 @@ import {AuthService} from "../services/auth.service";
   styleUrl: './auth.component.css'
 })
 export class AuthComponent {
-  authForm: FormGroup;
+  authForm?: FormGroup;
   viewType: string = "login";
 
-  constructor(formBuilder:FormBuilder, private authService: AuthService) {
-    this.authForm = formBuilder.group({
-      username:["", Validators.required],
-      email:["", Validators.required],
-      password:["", Validators.required],
-      confirmPassword:["", Validators.required]
-    });
+  constructor(private formBuilder:FormBuilder, private authService: AuthService) {
+    //exemplu de initializare
+    // this.authForm = this.formBuilder.group({});
+    this.onSetViewType("login");
   }
-  onSave(): void {
+  onRegister(): void {
     alert("Data saved");
-    if (this.authForm.valid){
-      console.log(this.authForm.value);
-      const body = this.authForm.value;
-      this.authService.register(body).subscribe((response: any) => {
+    if (this.authForm!.valid){
+      console.log(this.authForm!.value);
+      const body = this.authForm!.value;
+      this.authService.register(body).subscribe((response: any): void => {
         console.log(response);
       });
     } else {
-      alert("Form is invalid");
+      alert("Invalid form!");
     }
   }
-  onSetViewType(viewType: string) {
+  onSetViewType(viewType: string): void {
     console.log(viewType);
     this.viewType = viewType;
+
+    switch (this.viewType) {
+      case "login":
+        this.authForm = this.formBuilder.group({
+          email:["", Validators.required],
+          password:["", Validators.required]
+        });
+        break;
+      case "register":
+        this.authForm = this.formBuilder.group({
+          username:["", Validators.required],
+          email:["", Validators.required],
+          password:["", Validators.required],
+          confirmPassword:["", Validators.required]
+        });
+        break;
+    }
+  }
+  onLogin(): void {
+    console.log(this.authForm!.value);
+    if (this.authForm!.valid) {
+      console.log(this.authForm!.value);
+
+      const body = this.authForm!.value;
+      let request = this.authService.login(body);
+
+      request.subscribe((response: any) => {
+        console.log(response)
+      })
+    } else {
+      alert("Invalid form!");
+    }
   }
 }

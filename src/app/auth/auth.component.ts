@@ -24,6 +24,11 @@ import {AuthService} from "../services/auth.service";
   styleUrl: './auth.component.css'
 })
 export class AuthComponent {
+/*
+   ? in acest caz reprezinta null operator, permite ca variabila sa fie initializata mai tarziu
+   atunci cand folosim null operator, variabila cand este apelata trebuie sa fie urmata de ! care
+   semnifica ca acea variabila NU este null
+*/
   authForm?: FormGroup;
   viewType: string = "login";
 

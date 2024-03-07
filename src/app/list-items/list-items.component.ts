@@ -3,6 +3,7 @@ import {Item} from "../models/item.model";
 import {MatCard, MatCardContent} from "@angular/material/card";
 import {NgForOf} from "@angular/common";
 import {MatButton} from "@angular/material/button";
+import {ItemService} from "../services/item.service";
 
 @Component({
   selector: 'app-list-items',
@@ -19,15 +20,17 @@ import {MatButton} from "@angular/material/button";
 export class ListItemsComponent {
   itemsList: Array<Item> = [];
 
-  constructor() {
-    for (let index = 0; index < 5; index++) {
-      let item: Item = new Item("title " + index, " description " + index, " imagineUrl " + index,  "index");
-      this.itemsList.push(item);
-    }
-    console.log(this.itemsList);
+  constructor(private itemService: ItemService) {
+    itemService.getItemsList().subscribe((itemsListFromService: Array<Item>)=> {
+      this.itemsList = itemsListFromService;
+    })
   }
   onDelete(item: Item): void {
     console.log(item);
+    this.itemService.delete(item.id).subscribe((response: any)=>{
+      console.log(response);
+      this.itemService.read();
+    })
   }
 }
 

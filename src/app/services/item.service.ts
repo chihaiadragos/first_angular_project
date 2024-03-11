@@ -11,7 +11,7 @@ export class ItemService {
   //itemObservable = canal de YouTube la care noi ne abonam, el contine lista de obiecte
   private itemObservable = new BehaviorSubject<Array<Item>>([]);
   constructor(private httpClient: HttpClient) { }
-  public create(item: any){
+  public create(item: Item){
     const body = {
       title: item.title,
       description: item.description,
@@ -21,7 +21,18 @@ export class ItemService {
 
     return this.httpClient.post(this.apiUrl, body);
   }
-  public update(item: any){}
+  public update(item: Item){
+    //request de tip put modifica toate proprietatile obiectului mai putin id
+    //request de tip patch modifica doar proprietati pe care le dorim
+    const body = {
+      id: item.id,
+      title: item.title,
+      description: item.description,
+      imageUrl: item.imageUrl,
+      price: item.price
+    };
+    return this.httpClient.put(this.apiUrl, body);
+  }
   public delete(id: string){
     return this.httpClient.delete(this.apiUrl + "/" + id);
   }

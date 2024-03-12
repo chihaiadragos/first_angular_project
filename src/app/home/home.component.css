@@ -1,1 +1,11 @@
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
 
+.drawer-menu {
+  padding: 20px;
+  width: 200px;
+}

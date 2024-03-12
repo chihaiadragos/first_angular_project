@@ -10,12 +10,13 @@ import {ItemService} from "../services/item.service";
 import {Item} from "../models/item.model";
 import {AddUpdateItemComponent} from "../add-update-item/add-update-item.component";
 import {AuthComponent} from "../auth/auth.component";
+import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 
 @Component({
   selector: 'java64-home',
   standalone: true,
   imports: [
-    MatCardModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButton, ReactiveFormsModule, ListItemsComponent, AddUpdateItemComponent, AuthComponent
+    MatCardModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButton, ReactiveFormsModule, ListItemsComponent, AddUpdateItemComponent, AuthComponent, MatDrawerContainer, MatDrawer
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

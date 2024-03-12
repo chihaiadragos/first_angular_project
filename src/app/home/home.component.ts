@@ -13,6 +13,7 @@ import {AuthComponent} from "../auth/auth.component";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 import {MatToolbar} from "@angular/material/toolbar";
 import {Router} from "@angular/router";
+import {CartButtonComponent} from "../cart-button/cart-button.component";
 
 @Component({
   selector: 'java64-home',
@@ -30,7 +31,8 @@ import {Router} from "@angular/router";
     MatDrawerContainer,
     MatDrawer,
     MatIconButton,
-    MatToolbar
+    MatToolbar,
+    CartButtonComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

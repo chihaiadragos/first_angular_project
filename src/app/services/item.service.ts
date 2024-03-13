@@ -8,7 +8,7 @@ import {Item} from "../models/item.model";
 })
 export class ItemService {
   private apiUrl = "https://api.codebyte-software.com:2323/api/items";
-  //itemObservable = canal de YouTube la care noi ne abonam, el contine lista de obiecte
+  //itemObservable = "canal de YouTube" la care noi ne abonam, el contine lista de obiecte
   private itemObservable = new BehaviorSubject<Array<Item>>([]);
   constructor(private httpClient: HttpClient) { }
   public create(item: Item){
